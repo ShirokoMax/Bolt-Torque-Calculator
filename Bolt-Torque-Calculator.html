@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Расчет момента закручивания высокопрочных болтов</title>
+    </head>
+<style>
+    body {
+        background-color: rgb(31, 56, 85);
+        color: rgb(241, 240, 234);
+    }
+    h2 {
+        margin-left: 10px;
+    }
+    table {
+        text-align: center;
+        border: solid;
+        border-width: 2px;
+        border-color: black;
+        border-radius: 10px;
+        background-color: rgb(0, 137, 182);
+        color: black;
+    }
+    td {
+        border: solid;
+        border-color: black;
+        border-width: 1px;
+    }
+
+</style>
+<body>
+ <h2>Расчет момента закручивания высокопрочных болтов</h2>
+ Исходные данные:
+ <table class="main-table">
+<thead>
+    <tr>
+<td colspan="2"></td>
+<td>Ед.<br/>изм.</td>
+<td colspan="2"></td>
+    </tr>
+</thead>
+    
+<tr>
+    <td>К<sub>з</sub> = </td>
+    <td><input type="text" value="0." id="coefficient"></td>
+    <td>&mdash;</td>
+    <td>среднее значение коэффициент закручивания (из сертификата на болты)</td>
+</tr>
+<tr>
+    <td>p = </td>
+    <td><input type="text" id="force"></td>
+    <td>кН</td>
+    <td>расчетное осевое усилие натяжения болта (по проекту из КМ)</td>
+</tr>
+<tr>
+    <td>d = </td>
+    <td><input type="text" id="diameter"></td>
+    <td>мм</td>
+    <td>номинальный &Oslash; болта</td>
+</tr>
+ </table>
+ <br />
+<button onclick="calculate()">Рассчитать</button>
+ <br />
+ <br />
+ <table class="result-table ">
+     <tr>
+         <td colspan="3">Расчетный момент закручивания:</td>
+     </tr>
+     <tr>
+         <td>M = </td>
+         <td><input type="text" id="result"></td>
+         <td>Н&middot;м</td>
+     </tr>
+ </table>
+ <br />
+ <hr />
+ <h3>Выдержка из СП 70.13330.2012 "Несущие и ограждающие конструкции. <br /> 
+ Актуализированная редакция СНиП 3.03.01-87 (с Изменениями N 1, 3)":
+</h3>
+<p> 4.6.9 Расчетный момент закручивания М, Н&middot;м (кгс&middot;м), необходимый для
+ натяжения болтов, следует определять по формуле
+</p>
+ <div style="margin-left: 30px;"> 
+    M = K<sub>3</sub>&middot;P&middot;d, (4.1)
+</div>
+<br />
+ где К<sub>3</sub> - среднее значение коэффициента закручивания для каждой партии болтов,
+ принимаемое по результатам испытаний с помощью контрольных приборов,
+ позволяющих одновременно фиксировать величину осевого усилия в стержне
+ болта Р = (0,5 - 0,7)&middot;R<sub>bun</sub>&middot;A<sub>bn</sub> и приложенного к гайке крутящего момента М;
+ <br />
+ R<sub>bun</sub> - наименьшее временное сопротивление болта разрыву, принимаемое
+ по стандартам на применяемые болты, Н/мм<sup>2</sup> (кгс/мм<sup>2</sup>);
+ <br />
+ А<sub>bn</sub> - площадь сечения болта «нетто» (по резьбе), мм<sup>2</sup>;
+ <br />
+ Р - расчетное осевое усилие натяжения болта, заданное в рабочих чертежах КМ,
+ Н (кгс);
+ <br />
+ d - номинальный диаметр болта, м.
+
+ <script>
+ function calculate () {
+    let k = document.getElementById('coefficient').value;
+    let p = document.getElementById('force').value;
+    let d = document.getElementById('diameter').value;
+    let result = k*p*1000*d/1000;
+    document.getElementById('result').value = result;
+ }
+ </script>
+
+</body>
+</html>
