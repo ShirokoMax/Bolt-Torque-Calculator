@@ -19,3 +19,6 @@ body {
         border-color: black;
         border-width: 1px;
     }
+    #result {
+        background-color: rgb(192,192,192);
+    }

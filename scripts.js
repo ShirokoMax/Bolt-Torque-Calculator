@@ -1,4 +1,8 @@
- function calculate () {
+coefficient.oninput = calculate;
+force.oninput = calculate;
+diameter.oninput = calculate;
+
+function calculate () {
     let k = document.getElementById('coefficient').value;
     let p = document.getElementById('force').value;
     let d = document.getElementById('diameter').value;
